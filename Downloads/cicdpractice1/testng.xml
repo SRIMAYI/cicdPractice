@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Advanced Test Suite" parallel="true" thread-count="5">
+    <test name="Sample Test 1">
+        <classes>
+            <class name="ui.automationtalks.demoproject.UiTestClass"/>
+        </classes>
+    </test>
+</suite>
