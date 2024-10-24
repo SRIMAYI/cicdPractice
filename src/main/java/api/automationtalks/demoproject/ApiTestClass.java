@@ -1,6 +1,7 @@
 package api.automationtalks.demoproject;
 
 import org.apache.commons.lang.RandomStringUtils;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
