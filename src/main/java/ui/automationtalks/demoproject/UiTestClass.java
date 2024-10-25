@@ -49,5 +49,6 @@ public class UiTestClass {
     public void test2() {
         @Nullable String title = driver.getTitle();
         System.out.println("test2 title ---->" + title);
+        //new change in new-branch
     }
 }
