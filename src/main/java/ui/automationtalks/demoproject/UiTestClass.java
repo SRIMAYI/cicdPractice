@@ -30,8 +30,8 @@ public class UiTestClass {
         WebDriverManager.chromedriver().setup();
 
         // Pass ChromeOptions to RemoteWebDriver
-        driver = new RemoteWebDriver(new URL("http://192.168.1.3:4444"), options);
-
+        driver = new RemoteWebDriver(new URL("http://192.168.1.5:4444"), options);
+        http://192.168.1.5:4444
         // Open the browser and configure timeouts
         driver.get("https://www.fb.com");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -42,6 +42,7 @@ public class UiTestClass {
     public void test1() {
         String title = driver.getTitle();
         System.out.println("test1 title ---->" + title);
+        driver.quit();
     }
 
 
@@ -52,6 +53,8 @@ public class UiTestClass {
         //new change in new-branch
         //new change in new-branch
         //change in initial-setup 10:35
-        System.out.println("change in initial-setup 10:35");
+        driver.quit();
+        System.out.println("change in initial-setup 10:57");
+
     }
 }
