@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -21,20 +22,21 @@ public class UiTestClass {
     @BeforeMethod
     public void launchDriver() throws MalformedURLException {
 
-        ChromeOptions options = new ChromeOptions();
+       // ChromeOptions options = new ChromeOptions();
 
 
-        options.setCapability("platformName", "Windows 11");
+     //   options.setCapability("platformName", "Windows 11");
 
         // Use WebDriverManager to handle the driver setup
         WebDriverManager.chromedriver().setup();
 
         // Pass ChromeOptions to RemoteWebDriver
-        driver = new RemoteWebDriver(new URL("http://192.168.1.5:4444"), options);
+      //  driver = new RemoteWebDriver(new URL("http://192.168.1.5:4444"), options);
         http://192.168.1.5:4444
         // Open the browser and configure timeouts
+       driver= new ChromeDriver();
         driver.get("https://www.fb.com");
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
@@ -42,7 +44,7 @@ public class UiTestClass {
     public void test1() {
         String title = driver.getTitle();
         System.out.println("test1 title ---->" + title);
-        driver.quit();
+
     }
 
 
@@ -53,8 +55,21 @@ public class UiTestClass {
         //new change in new-branch
         //new change in new-branch
         //change in initial-setup 10:35
-        driver.quit();
+
         System.out.println("change in new-branch 11:03");
 
+    }
+
+
+    @AfterMethod
+    public void postCondition(){
+        // Safely quit the driver if it exists
+        if (driver != null) {
+            try {
+                driver.quit();
+            } catch (Exception e) {
+                System.out.println("Exception occurred while closing the driver: " + e.getMessage());
+            }
+        }
     }
 }
