@@ -54,7 +54,7 @@ public class UiTestClass {
         //new change in new-branch
         //change in initial-setup 10:35
         driver.quit();
-        System.out.println("change in initial-setup 10:57");
+        System.out.println("change in new-branch 11:03");
 
     }
 }
