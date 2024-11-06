@@ -2,6 +2,7 @@ package ui.automationtalks.demoproject;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.jspecify.annotations.Nullable;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,35 +23,36 @@ public class UiTestClass {
     @BeforeMethod
     public void launchDriver() throws MalformedURLException {
 
-       // ChromeOptions options = new ChromeOptions();
+        // Set up ChromeOptions
+        ChromeOptions options = new ChromeOptions();
+        options.setCapability("platformName", "Windows 11");
 
+        // Set capabilities for the remote WebDriver
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("browserName", "chrome");
+        options.merge(capabilities);
 
-     //   options.setCapability("platformName", "Windows 11");
+        // Use RemoteWebDriver with hub URL
+      //  driver = new RemoteWebDriver(new URL("http://localhost:4446/wd/hub"), options);
+         driver = new ChromeDriver();
 
-        // Use WebDriverManager to handle the driver setup
-        WebDriverManager.chromedriver().setup();
-
-        // Pass ChromeOptions to RemoteWebDriver
-      //  driver = new RemoteWebDriver(new URL("http://192.168.1.5:4444"), options);
-        http://192.168.1.5:4444
-        // Open the browser and configure timeouts
-       driver= new ChromeDriver();
-        driver.get("https://www.fb.com");
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
-    @Test
+    @Test(priority = 1)
     public void test1() {
+        driver.get("https://www.fb.com");
         String title = driver.getTitle();
         System.out.println("test1 title ---->" + title);
 
     }
 
 
-    @Test
+    @Test(priority = 2)
     public void test2() {
-        @Nullable String title = driver.getTitle();
+        driver.get("https://www.google.com");
+      String title = driver.getTitle();
         System.out.println("test2 title ---->" + title);
         //new change in new-branch
         //new change in new-branch
