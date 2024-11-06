@@ -58,7 +58,7 @@ public class UiTestClass {
         //new change in new-branch
         //change in initial-setup 10:35
 
-        System.out.println("change in new-branch 11:03");
+        System.out.println("change in new-branch 07:27");
 
     }
 
