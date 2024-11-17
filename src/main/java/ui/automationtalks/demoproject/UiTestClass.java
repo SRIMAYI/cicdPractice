@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class UiTestClass {
     WebDriver driver;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void launchDriver() throws MalformedURLException {
 
         // Set up ChromeOptions
@@ -36,42 +36,42 @@ public class UiTestClass {
       //  driver = new RemoteWebDriver(new URL("http://localhost:4446/wd/hub"), options);
          driver = new ChromeDriver();
 
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
     @Test(priority = 1)
     public void test1() {
         driver.get("https://www.fb.com");
-        String title = driver.getTitle();
-        System.out.println("test1 title ---->" + title);
-
+        System.out.println("test1 title ---->" + driver.getTitle());
+        driver.quit();
     }
 
 
     @Test(priority = 2)
     public void test2() {
         driver.get("https://www.google.com");
-      String title = driver.getTitle();
-        System.out.println("test2 title ---->" + title);
+
+        System.out.println("test2 title ---->" + driver.getTitle());
         //new change in new-branch
         //new change in new-branch
         //change in initial-setup 10:35
 
         System.out.println("change in new-branch 07:27");
+        driver.quit();
 
     }
 
 
-    @AfterMethod
+  /*  @AfterMethod
     public void postCondition(){
         // Safely quit the driver if it exists
         if (driver != null) {
             try {
-                driver.quit();
+
             } catch (Exception e) {
                 System.out.println("Exception occurred while closing the driver: " + e.getMessage());
             }
         }
-    }
+    }*/
 }

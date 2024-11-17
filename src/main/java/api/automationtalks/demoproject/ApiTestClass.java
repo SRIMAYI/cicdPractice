@@ -22,5 +22,17 @@ public class ApiTestClass {
 
         Assert.assertEquals(httpResponse.getStatusLine().getStatusCode(),404);
         System.out.println("------------>httpResponse.getStatusLine().getStatusCode()---->"+httpResponse.getStatusLine().getStatusCode());
+
+
+
+
+        HttpUriRequest request1 = new HttpGet("https://www.facebook.com/");
+
+        CloseableHttpResponse httpResponse1 = HttpClientBuilder.create().build().execute(request1);
+
+        System.out.println(httpResponse1.getStatusLine().getStatusCode()+"Keerthesh");
+
+        Assert.assertEquals(httpResponse1.getStatusLine().getStatusCode(),200);
+        System.out.println("------------>httpResponse.getStatusLine().getStatusCode()---->"+httpResponse1.getStatusLine().getStatusCode());
     }
 }
